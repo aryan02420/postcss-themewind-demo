@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root,
+.theme-light,
+[data-theme="light"] {
+  --brand-primary: useColor(theme('colors.indigo.500'));
+  --brand-secondary: useColor(theme('colors.sky.700'));
+  --text-primary: useColor(theme('colors.black'));
+  --text-secondary: useColor(theme('colors.trueGray.700'));
+  --text-inverted: useColor(theme('colors.white'));
+  --bg-primary: useColor(theme('colors.blueGray.50'));
+  --bg-secondary: useColor(theme('colors.coolGray.200'));
+}
+
+.theme-dark,
+[data-theme="dark"]  {
+  --brand-primary: useColor(rgb(61, 218, 61));
+  --brand-secondary: useColor(hsl(120, 57%, 36%));
+  --text-primary: useColor(theme('colors.gray.50'));
+  --text-secondary: useColor(theme('colors.trueGray.300'));
+  --text-inverted: useColor(theme('colors.black'));
+  --bg-primary: useColor(#2c2c2c);
+  --bg-secondary: useColor(theme('colors.gray.900'));
+}
+
+.theme-purple,
+[data-theme="purple"]  {
+  --brand-primary: useColor(theme('colors.purple.500'));
+  --brand-secondary: useColor(theme('colors.purple.700'));
+  --text-inverted: useColor(theme('colors.fuchsia.50'));
+  --bg-primary: useColor(theme('colors.fuchsia.100'));
+  --bg-secondary: useColor(theme('colors.purple.200'));
+}
+
+body {
+  transition: all 100ms ease-in;
+}
+
+#switcher input[type="radio"] {
+  @apply relative p-0 border-none ring-0;
+}
+#switcher input[type="radio"]:checked {
+  @apply ring-2 ring-brand-secondary;
+}
+
+#switcher input[type="radio"]::before {
+  content: '';
+  @apply absolute top-0 left-0 w-1/2 h-full rounded-l-full bg-brand-primary;
+}
+
+#switcher input[type="radio"]::after {
+  content: '';
+  @apply absolute top-0 right-0 w-1/2 h-full rounded-r-full bg-primary;
+}
